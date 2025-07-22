@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Heart, Menu, X, Camera, Clock, BookOpen, LogOut } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { usePathname } from 'next/navigation'
-import { useAuth } from '@/hooks/useAuth'
+import { useAuth } from '@/contexts/AuthContext'
 
 const navigationItems = [
   { name: 'Ana Sayfa', href: '/', icon: Heart },
@@ -30,8 +30,8 @@ export default function Header() {
     return null
   }
 
-  const handleLogout = () => {
-    logout()
+  const handleLogout = async () => {
+    await logout()
   }
 
   return (
@@ -213,9 +213,9 @@ export default function Header() {
                 transition={{ delay: navigationItems.length * 0.1 }}
               >
                 <button
-                  onClick={() => {
+                  onClick={async () => {
                     setIsMenuOpen(false)
-                    handleLogout()
+                    await handleLogout()
                   }}
                   className={cn(
                     "flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 w-full",

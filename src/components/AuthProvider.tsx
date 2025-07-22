@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
-import { useAuth } from '@/hooks/useAuth'
+import { useAuth } from '@/contexts/AuthContext'
 import LoginPage from './LoginPage'
 
 interface AuthProviderProps {
@@ -10,7 +10,7 @@ interface AuthProviderProps {
 }
 
 export default function AuthProvider({ children }: AuthProviderProps) {
-  const { isLoggedIn, isLoading } = useAuth()
+  const { isAuthenticated, isLoading } = useAuth()
   const [showLogin, setShowLogin] = useState(false)
   const pathname = usePathname()
   const router = useRouter()
@@ -21,18 +21,18 @@ export default function AuthProvider({ children }: AuthProviderProps) {
 
   useEffect(() => {
     if (!isLoading) {
-      if (!isLoggedIn && !isPublicRoute) {
+      if (!isAuthenticated && !isPublicRoute) {
         // Show login modal immediately for protected routes
         setShowLogin(true)
-      } else if (isLoggedIn && pathname === '/login') {
+      } else if (isAuthenticated && pathname === '/login') {
         // If logged in and on login page, redirect to home
         router.push('/')
-      } else if (isLoggedIn) {
+      } else if (isAuthenticated) {
         // User is logged in, hide login modal
         setShowLogin(false)
       }
     }
-  }, [isLoggedIn, isLoading, isPublicRoute, pathname, router])
+  }, [isAuthenticated, isLoading, isPublicRoute, pathname, router])
 
   const handleLoginSuccess = () => {
     setShowLogin(false)
@@ -55,12 +55,12 @@ export default function AuthProvider({ children }: AuthProviderProps) {
   }
 
   // Show login modal for protected routes when not authenticated
-  if (showLogin && !isLoggedIn && !isPublicRoute) {
+  if (showLogin && !isAuthenticated && !isPublicRoute) {
     return <LoginPage onSuccess={handleLoginSuccess} />
   }
 
   // Show login page for /login route
-  if (pathname === '/login' && !isLoggedIn) {
+  if (pathname === '/login' && !isAuthenticated) {
     return <LoginPage onSuccess={handleLoginSuccess} />
   }
 

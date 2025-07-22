@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Heart, Lock, Eye, EyeOff } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-import { useAuth } from '@/hooks/useAuth'
+import { useAuth } from '@/contexts/AuthContext'
 
 // Generate deterministic "random" values based on index
 const getDeterministicValue = (index: number, seed: number = 1) => {
