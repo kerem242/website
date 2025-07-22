@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Heart, Clock, MapPin, Eye, Smile, Sparkles, ArrowDown } from 'lucide-react'
-import Image from 'next/image'
+// import Image from 'next/image' // Removed for static export compatibility
 import { type KarsiImage } from '@/lib/getKarsiImages'
 
 export default function MeetingStoryPage() {
@@ -135,13 +135,11 @@ export default function MeetingStoryPage() {
                 <div className="bg-gradient-to-br from-pink-200 via-amber-200 to-rose-200 rounded-3xl p-8 shadow-lg flex items-center justify-center aspect-square overflow-hidden">
                   {photosLoaded && getPhotoByOrder(1) && !imageErrors[1] ? (
                     <div className="relative w-full h-full rounded-2xl overflow-hidden min-h-[200px]">
-                      <Image
+                      <img
                         src={getPhotoByOrder(1)!.src}
                         alt={getPhotoByOrder(1)!.alt}
-                        fill
-                        className="object-cover transition-transform duration-300 hover:scale-105"
+                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                         onError={() => handleImageError(1)}
-                        sizes="(max-width: 1024px) 50vw, 25vw"
                       />
                     </div>
                   ) : (
@@ -189,13 +187,11 @@ export default function MeetingStoryPage() {
                 <div className="bg-gradient-to-br from-blue-200 via-purple-200 to-pink-200 rounded-3xl p-8 shadow-lg flex items-center justify-center aspect-square overflow-hidden">
                   {photosLoaded && getPhotoByOrder(2) && !imageErrors[2] ? (
                     <div className="relative w-full h-full rounded-2xl overflow-hidden min-h-[200px]">
-                      <Image
+                      <img
                         src={getPhotoByOrder(2)!.src}
                         alt={getPhotoByOrder(2)!.alt}
-                        fill
-                        className="object-cover transition-transform duration-300 hover:scale-105"
+                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                         onError={() => handleImageError(2)}
-                        sizes="(max-width: 1024px) 50vw, 25vw"
                       />
                     </div>
                   ) : (
@@ -243,13 +239,11 @@ export default function MeetingStoryPage() {
                 <div className="bg-gradient-to-br from-amber-200 via-orange-200 to-red-200 rounded-3xl p-8 shadow-lg flex items-center justify-center aspect-square overflow-hidden">
                   {photosLoaded && getPhotoByOrder(3) && !imageErrors[3] ? (
                     <div className="relative w-full h-full rounded-2xl overflow-hidden min-h-[200px]">
-                      <Image
+                      <img
                         src={getPhotoByOrder(3)!.src}
                         alt={getPhotoByOrder(3)!.alt}
-                        fill
-                        className="object-cover transition-transform duration-300 hover:scale-105"
+                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                         onError={() => handleImageError(3)}
-                        sizes="(max-width: 1024px) 50vw, 25vw"
                       />
                     </div>
                   ) : (
@@ -297,13 +291,11 @@ export default function MeetingStoryPage() {
                 <div className="bg-gradient-to-br from-green-200 via-teal-200 to-blue-200 rounded-3xl p-8 shadow-lg flex items-center justify-center aspect-square overflow-hidden">
                   {photosLoaded && getPhotoByOrder(4) && !imageErrors[4] ? (
                     <div className="relative w-full h-full rounded-2xl overflow-hidden min-h-[200px]">
-                      <Image
+                      <img
                         src={getPhotoByOrder(4)!.src}
                         alt={getPhotoByOrder(4)!.alt}
-                        fill
-                        className="object-cover transition-transform duration-300 hover:scale-105"
+                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                         onError={() => handleImageError(4)}
-                        sizes="(max-width: 1024px) 50vw, 25vw"
                       />
                     </div>
                   ) : (

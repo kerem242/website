@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Heart, ChevronLeft, ChevronRight, Camera, Loader2 } from 'lucide-react'
-import Image from 'next/image'
+// import Image from 'next/image' // Removed for static export compatibility
 import { type GalleryImage } from '@/lib/getImages'
 
 export default function GalleryPage() {
@@ -170,13 +170,11 @@ export default function GalleryPage() {
                     {/* Photo Container */}
                     <div className="relative aspect-square overflow-hidden">
                       {!imageError[photo.id] ? (
-                        <Image
+                        <img
                           src={photo.src}
                           alt={photo.alt}
-                          fill
-                          className="object-cover transition-transform duration-300 group-hover:scale-110"
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                           onError={() => handleImageError(photo.id)}
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                         />
                       ) : (
                         // Fallback placeholder when image fails to load
@@ -283,14 +281,11 @@ export default function GalleryPage() {
               {/* Large Photo */}
               <div className="relative aspect-video bg-gray-100">
                 {!imageError[photos[currentIndex]?.id] ? (
-                  <Image
+                  <img
                     src={photos[currentIndex]?.src || ''}
                     alt={photos[currentIndex]?.alt || ''}
-                    fill
-                    className="object-contain"
+                    className="w-full h-full object-contain"
                     onError={() => handleImageError(photos[currentIndex]?.id)}
-                    sizes="(max-width: 1024px) 100vw, 1024px"
-                    priority
                   />
                 ) : (
                   // Fallback for lightbox
