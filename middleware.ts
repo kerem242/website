@@ -2,8 +2,8 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import jwt from 'jsonwebtoken'
 
-const JWT_SECRET = process.env.JWT_SECRET || 'fallback-secret'
-const SESSION_COOKIE_NAME = process.env.SESSION_COOKIE_NAME || 'romantic-auth-session'
+const JWT_SECRET = 'your-super-secret-jwt-key-for-romantic-site-2024'
+const SESSION_COOKIE_NAME = 'romantic-auth-session'
 
 // Protected routes that require authentication
 const protectedRoutes = [

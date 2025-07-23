@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { verifySession } from '@/lib/auth'
 
-const SESSION_COOKIE_NAME = process.env.SESSION_COOKIE_NAME || 'romantic-auth-session'
+const SESSION_COOKIE_NAME = 'romantic-auth-session'
 
 export const dynamic = 'force-static'
 

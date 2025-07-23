@@ -3,21 +3,14 @@ import { createSession } from '@/lib/auth'
 
 export const dynamic = 'force-static'
 
-const SESSION_COOKIE_NAME = process.env.SESSION_COOKIE_NAME || 'romantic-auth-session'
+const SESSION_COOKIE_NAME = 'romantic-auth-session'
 
 export async function POST(request: NextRequest) {
   try {
     const { password } = await request.json()
     
-    // Get the password from environment variables
-    const correctPassword = process.env.SITE_PASSWORD
-    
-    if (!correctPassword) {
-      return NextResponse.json(
-        { success: false, message: 'Server configuration error' },
-        { status: 500 }
-      )
-    }
+    // Hardcoded password for static deployment
+    const correctPassword = '1503'
     
     // Check if the provided password matches
     if (password === correctPassword) {
